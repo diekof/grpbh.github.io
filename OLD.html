@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Changelog</title>
+</head>
+
+<body>
+    <div id="app" class="container">
+           
+        <div class="row">
+            <div class="col">
+                <h1> {{ message }}</h1>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-primary" role="alert">
+                    {{titulo}}
+                    {{versao}}
+                </div>
+            </div>
+        </div>
+
+<div class="row">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Prioridade</th>
+                <th scope="col">Pacote</th>
+                <th scope="col">Chamado</th>
+                <th scope="col">Chamado_Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="chamado of chamados">
+                <td scope="row">{{chamado.Prioridade}}</td>
+                <td>{{chamado.Pacote}}</td>
+                <td>{{chamado.Chamado}}</td>
+                <td>{{chamado.Chamado_Nome}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+        
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Changelog',
+                titulo: 'ESafira',
+                versao:  '04.426!',
+                chamados: [{"Prioridade":"Média","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > PLANEJAMENTO E ORÇAMENTO > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > LDO: Elaboração","Chamado":57639,"Chamado_Nome":"[PLN] 2.24 Gerar a proposta da Lei de Diretrizes Orçamentárias acompanhada do Anexo de Metas fiscais."},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > FINANÇAS > Pacotes de Requisitos Funcionais > Tesouraria","Chamado":72835,"Chamado_Nome":"[FIN] - [3.68] [3.69]  Transferência Bancária: Ajustes Gerais"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74655,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 1 - Balanço Orçamentário (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74719,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 2 - Demonstrativo das Despesas por Função/SubFunção (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74721,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 4 - Demonstrativo das Receitas e Despesas Previdenciárias do Regime Próprio de Previdência dos Servidores (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74723,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 6 - Demonstrativos dos Resultados Primário e Nominal (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74724,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 7 - Demonstrativo dos Restos à Pagar por Poder e Órgão (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74727,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 9 - Demonstrativo das Receitas de Operações de Crédito e Despesas de Capital (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74729,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 10 - Demonstrativo da Projeção Atuarial do Regime Próprio de Previdência dos Servidores (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74736,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 01 - Demonstrativo de Despesa com Pessoal (RGF)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74737,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 2 - Demonstrativo da Dívida Consolidada Líquida (RGF)"},{"Prioridade":"Crítica","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > FINANÇAS > Pacotes de Requisitos Funcionais > Empenho","Chamado":71283,"Chamado_Nome":"[FIN] [H1] [EMP] 3.18.1 - O sistema permitiu alterar os parametros de despesa indireta de contrato para um agrupador vinculado a empenhos"},{"Prioridade":"Crítica","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > FINANÇAS > Pacotes de Requisitos Funcionais > Liquidação","Chamado":76068,"Chamado_Nome":"[FIN] [LQD] [INT] wtliquidacao - POC"},{"Prioridade":"Média","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONVÊNIOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Celebração","Chamado":76809,"Chamado_Nome":"[CNV] Erro ação Excluir - Pré Celebração. "},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONVÊNIOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Celebração","Chamado":76813,"Chamado_Nome":"[CNV] Erro campo Concedente - Pré Celebração."},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONVÊNIOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Celebração","Chamado":76821,"Chamado_Nome":"[CNV] Erro Fluxo Devolução - Pré Celebração"},{"Prioridade":"Média","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONVÊNIOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Celebração","Chamado":76830,"Chamado_Nome":"[CNV] Erro Fluxo Devolução para próxima fase - Pré Celebração"},{"Prioridade":"Média","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONVÊNIOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Celebração","Chamado":76831,"Chamado_Nome":"[CNV] Incluir Regra no Designar Responsável- Pré Celebração"},{"Prioridade":"Média","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONVÊNIOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Celebração","Chamado":76832,"Chamado_Nome":"[CNV] Alterar nome de campo - Pré Celebração. "}]
+            }
+        });
+    </script>
+
+</body>
+
+</html>

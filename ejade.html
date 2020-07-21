@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Changelog</title>
+    <style media="print">
+        .form-row{display: none;}
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container-fluid">
+           
+        <div class="row">
+            <div class="col">
+                <h1> {{ message }}
+                    <small v-if="selected.versao_num">
+                        <span class="badge badge-secondary">
+                            {{selected.versao_num}}
+                        </span>
+                    </small>
+                </h1>
+            </div>
+
+        </div>
+
+        <div class="row">  
+            <div class="col">
+                <small><span class="badge badge-primary">{{titulo}}</span></small>
+                <small><span class="badge badge-dark">{{selected.versao_num}}</span></small>
+                <small><span class="badge badge-warning">{{selected.build}}</span></small>
+                <small v-if="selected.chamados!=0" ><span class="badge badge-danger">QTD: {{selected.chamados.length}}</span></small>
+                
+            </div>
+            <div class="col">
+                
+            </div>        
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Versão</label>
+                        <select id="inputState" class="form-control" v-model="selected" >
+                            <option v-for="changelog of changelogs" 
+                                :value="changelog">{{changelog.versao_num}}</option>
+                        </select>
+                    </div>
+                    <!--div class="form-group col-md-6">
+                        <label for="inputState">Versão</label>
+                        <button v-on:click="createPDF">
+                            <i class="fas fa-file-pdf"></i>
+                        </button>
+                    </div-->
+                </div>
+            </div>            
+        </div>
+
+        <!--div class="row">
+            <div class="col">
+                <div class="alert alert-primary" role="alert">
+                    {{titulo}}
+                </div>
+            </div>
+        </div-->
+
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped" id="changelog">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Prioridade</th>
+                            <th scope="col">Pacote</th>
+                            <th scope="col">Chamado</th>
+                            <th scope="col">Chamado_Nome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-if="!selected.chamados" class="bg-warning">
+                            <td colspan="4">
+                                <span style="font-weight: bold;text-align: center;">
+                                    Registro encontrado!
+                                </span> 
+                            </td>
+                        </tr>
+                        <tr v-for="chamado of selected.chamados" >
+                            <td scope="row">{{chamado.Prioridade}}</td>
+                            <td>{{chamado.Pacote}}</td>
+                            <td>
+                                <a target="_blank" v-bind:href="'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=' + chamado.Chamado">
+                                    {{chamado.Chamado}}
+                                </a>                    
+                            </td>
+                            <td>{{chamado.Chamado_Nome}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>            
+        </div>
+        
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+    
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Changelog',
+                titulo: 'eJade',
+                selected:{"chamados":[]},
+                changelogs: [
+                                {
+                                    "versao_num":"05.377",
+                                    "build":"Build #166 (20/07/2020 12:09:03)",
+                                    "chamados":[{"Prioridade":"Média","Pacote":"GESTÃO ADMINISTRATIVA > SUPRIMENTOS/ALMOXARIFADO > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Movimentação","Chamado":60647,"Chamado_Nome":"[SUP] - 7.30.1 -Permitir o ajuste físico e/ou financeiro (entrada/saída) de itens no estoque, procedendo as devidas correções, conforme quantidade e valor definido pelo usuário, repercutindo no saldo físico e financeiro"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > PATRIMÔNIO > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Bens Móveis: Relatórios","Chamado":73938,"Chamado_Nome":"[PAT] [H5] Novo Relatório - Inventários"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Formalização do Contrato","Chamado":60728,"Chamado_Nome":"[CTT] Alteração na tela de seleção do responsável"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Formalização do Contrato","Chamado":64104,"Chamado_Nome":"[CTT] [H1] - Padronização de filtros e telas - Planejamento"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > COMPRAS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Processo Licitatório Fase Interna","Chamado":72381,"Chamado_Nome":"[CMP] Parecer jurídico"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > PATRIMÔNIO > Migração","Chamado":68136,"Chamado_Nome":"[PAT] PADRONIZAÇÃO PATRIMONIO"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Formalização do Contrato","Chamado":64070,"Chamado_Nome":"[CTT] [H1] - Data de Publicação e Data de Assinatura"}]
+                                },
+								{
+									"versao_num":"05.374",
+									"build":"Build #164 (17/07/2020 13:55:45)",
+									"chamados":[{"Prioridade":"Média","Pacote":"GESTÃO ADMINISTRATIVA > SUPRIMENTOS/ALMOXARIFADO > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Movimentação","Chamado":60647,"Chamado_Nome":"[SUP] - 7.30.1 -Permitir o ajuste físico e/ou financeiro (entrada/saída) de itens no estoque, procedendo as devidas correções, conforme quantidade e valor definido pelo usuário, repercutindo no saldo físico e financeiro"},{"Prioridade":"Melhoria","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Alteração Contratual","Chamado":65257,"Chamado_Nome":"[CTT] 5.17 - Permitir e controlar a emissão, cancelamento e execução da ordem de compras de material ou de serviços dos contratos, atualizando em tempo real as quantidades entregues e disponíveis para cada unidade gestora ou orçamentária..."},{"Prioridade":"Média","Pacote":"GESTÃO ADMINISTRATIVA > COMPRAS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Processo Licitatório Fase Externa","Chamado":66280,"Chamado_Nome":"8.44\tRegistrar, automaticamente, as informações das propostas recebidas por fornecedor. Ex: Número do processo, Tipo da compra, Fornecedor, Data e hora do recebimento, Usuário responsável pelo registro."},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Formalização do Contrato","Chamado":62167,"Chamado_Nome":"[CTT] [H1] - Aba Contratos - Alteração de campos "},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > COMPRAS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Processo Licitatório Fase Interna","Chamado":72381,"Chamado_Nome":"[CMP] Parecer jurídico"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > PATRIMÔNIO > Migração","Chamado":68136,"Chamado_Nome":"[PAT] PADRONIZAÇÃO PATRIMONIO"},{"Prioridade":"Crítica","Pacote":"GESTÃO ADMINISTRATIVA > COMPRAS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Processo Licitatório Fase Externa","Chamado":77077,"Chamado_Nome":"[CMP] Adicionar os campo prazo de entrega e prazo de pagamento nas propostas do fornecedor ( Fase de Propostas)."}]
+								},
+                                {
+                                    "versao_num":"05.364",
+                                    "build": "",
+                                    "chamados":[{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Formalização do Contrato","Chamado":38440,"Chamado_Nome":"[CTT] 5.15 - Permitir o empenhamento prévio da despesa no sistema orçamentário e financeiro, a partir da efetivação do Contrato e suas alterações."},{"Prioridade":"Média","Pacote":"GESTÃO ADMINISTRATIVA > SUPRIMENTOS/ALMOXARIFADO > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Controle de Almoxarifado","Chamado":52122,"Chamado_Nome":"[SUP] 7.35 - Validar o percentual de vida útil definido no cadastro do item no ato do recebimento direto (por compra), não permitindo a entrada de produtos com vida útil inferior a definida. (ex.: percentual de vida útil 90%; fabricação 01/04/2018 va"},{"Prioridade":"Crítica","Pacote":"GESTÃO ADMINISTRATIVA > COMPRAS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Processo Licitatório Fase Interna","Chamado":76426,"Chamado_Nome":"[CMP] Ao adicionar novo fornecedor temporario, permitir que este fornecedor já seja incluido na grade de fornecedores da fase de identificação do licitante."}]
+                                },
+                                {
+                                    "versao_num":"05.358",
+                                    "build":"Build #155 (13/07/2020 10:26:52)",
+                                    "chamados":[{"Prioridade":"Média","Pacote":"GESTÃO ADMINISTRATIVA > SUPRIMENTOS/ALMOXARIFADO > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Movimentação","Chamado":58495,"Chamado_Nome":"[SUP] - 7.33.1 - Permitir cadastros dos diversos tipos de entradas e saídas do estoque (Ex: Entrada: compra, doação, transferência, fabricação própria, devolução// saída: req., transf., ajuste, etc.)"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Execução do Contrato","Chamado":70576,"Chamado_Nome":"[CTT] 5.12.3 Disparar alertas e notificações por agendamento de datas de expiração, renovação, insuficiência de saldo e outras relacionadas à gestão dos contratos"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Formalização do Contrato","Chamado":62611,"Chamado_Nome":"[CTT[ [H1] - Alteração de nomenclatura na tela CCG"}]
+                                }
+                            ],
+                versao:  '05.358!',
+                chamados: [{"Prioridade":"Média","Pacote":"GESTÃO ADMINISTRATIVA > SUPRIMENTOS/ALMOXARIFADO > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Movimentação","Chamado":58495,"Chamado_Nome":"[SUP] - 7.33.1 - Permitir cadastros dos diversos tipos de entradas e saídas do estoque (Ex: Entrada: compra, doação, transferência, fabricação própria, devolução// saída: req., transf., ajuste, etc.)"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Execução do Contrato","Chamado":70576,"Chamado_Nome":"[CTT] 5.12.3 Disparar alertas e notificações por agendamento de datas de expiração, renovação, insuficiência de saldo e outras relacionadas à gestão dos contratos"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Formalização do Contrato","Chamado":62611,"Chamado_Nome":"[CTT[ [H1] - Alteração de nomenclatura na tela CCG"}]
+            }
+        });
+    </script>
+
+</body>
+
+</html>

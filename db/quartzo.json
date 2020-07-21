@@ -1,0 +1,7 @@
+[
+    {
+        "versao_num":"05.291",
+        "build":"",
+        "chamados":[{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CADASTRO ÚNICO > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Estrutura Organizacional","Chamado":71335,"Chamado_Nome":"[CDU] [HML] O campo Classificação Organograma está carregando dados excluídos da tabela de Classificação Organograma"},{"Prioridade":"Média","Pacote":"GRP > CADASTRO ÚNICO > Estrutura Organizacional","Chamado":74746,"Chamado_Nome":"[CDU][PROD] Sistema está exibindo unidades orçamentárias subordinadas com exercício diferente da pesquisa."},{"Prioridade":"Baixa","Pacote":"GRP > CADASTRO ÚNICO > Estrutura Organizacional","Chamado":76792,"Chamado_Nome":"[CDU] [PROD] Corrigir/melhorar tela da estrutura organizacional."},{"Prioridade":"Baixa","Pacote":"GRP > CADASTRO ÚNICO > Estrutura Organizacional","Chamado":76478,"Chamado_Nome":"[CDU] [PROD] Correção da disposição do campo para o preenchimento do filtro."}]
+    }
+]

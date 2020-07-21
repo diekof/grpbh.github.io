@@ -1,0 +1,12 @@
+[
+    {
+        "versao_num":"05.358",
+        "build":"Build #155 (13/07/2020 10:26:52)",
+        "chamados":[{"Prioridade":"Média","Pacote":"GESTÃO ADMINISTRATIVA > SUPRIMENTOS/ALMOXARIFADO > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Movimentação","Chamado":58495,"Chamado_Nome":"[SUP] - 7.33.1 - Permitir cadastros dos diversos tipos de entradas e saídas do estoque (Ex: Entrada: compra, doação, transferência, fabricação própria, devolução// saída: req., transf., ajuste, etc.)"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Execução do Contrato","Chamado":70576,"Chamado_Nome":"[CTT] 5.12.3 Disparar alertas e notificações por agendamento de datas de expiração, renovação, insuficiência de saldo e outras relacionadas à gestão dos contratos"},{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Formalização do Contrato","Chamado":62611,"Chamado_Nome":"[CTT[ [H1] - Alteração de nomenclatura na tela CCG"}]
+    },
+    {
+        "versao_num":"05.364",
+        "build": "",
+        "chamados":[{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CONTRATOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Formalização do Contrato","Chamado":38440,"Chamado_Nome":"[CTT] 5.15 - Permitir o empenhamento prévio da despesa no sistema orçamentário e financeiro, a partir da efetivação do Contrato e suas alterações."},{"Prioridade":"Média","Pacote":"GESTÃO ADMINISTRATIVA > SUPRIMENTOS/ALMOXARIFADO > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Controle de Almoxarifado","Chamado":52122,"Chamado_Nome":"[SUP] 7.35 - Validar o percentual de vida útil definido no cadastro do item no ato do recebimento direto (por compra), não permitindo a entrada de produtos com vida útil inferior a definida. (ex.: percentual de vida útil 90%; fabricação 01/04/2018 va"},{"Prioridade":"Crítica","Pacote":"GESTÃO ADMINISTRATIVA > COMPRAS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Processo Licitatório Fase Interna","Chamado":76426,"Chamado_Nome":"[CMP] Ao adicionar novo fornecedor temporario, permitir que este fornecedor já seja incluido na grade de fornecedores da fase de identificação do licitante."}]
+    }
+]

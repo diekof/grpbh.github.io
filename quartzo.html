@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Changelog</title>
+    <style media="print">
+        .form-row{display: none;}
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container-fluid">
+           
+        <div class="row">
+            <div class="col">
+                <h1> {{ message }}<small><span class="badge badge-secondary">{{selected.versao_num}}</span></small></h1>
+            </div>
+
+        </div>
+
+        <div class="row">  
+            <div class="col">
+                <small><span class="badge badge-primary">{{titulo}}</span></small>
+                <small><span class="badge badge-dark">{{selected.versao_num}}</span></small>
+                <small><span class="badge badge-danger">QTD: {{selected.chamados.length}}</span></small>
+                
+            </div>
+            <div class="col">
+                
+            </div>        
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Versão</label>
+                        <select id="inputState" class="form-control" v-model="selected" >
+                            <option v-for="changelog of changelogs" 
+                                :value="changelog">{{changelog.versao_num}}</option>
+                        </select>
+                    </div>
+                    <!--div class="form-group col-md-6">
+                        <label for="inputState">Versão</label>
+                        <button v-on:click="createPDF">
+                            <i class="fas fa-file-pdf"></i>
+                        </button>
+                    </div-->
+                </div>
+            </div>            
+        </div>
+
+        <!--div class="row">
+            <div class="col">
+                <div class="alert alert-primary" role="alert">
+                    {{titulo}}
+                </div>
+            </div>
+        </div-->
+
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped" id="changelog">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Prioridade</th>
+                            <th scope="col">Pacote</th>
+                            <th scope="col">Chamado</th>
+                            <th scope="col">Chamado_Nome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-if="!selected.chamados" class="bg-warning">
+                            <td colspan="4">
+                                <span style="font-weight: bold;text-align: center;">
+                                    Registro encontrado!
+                                </span> 
+                            </td>
+                        </tr>
+                        <tr v-for="chamado of selected.chamados" >
+                            <td scope="row">{{chamado.Prioridade}}</td>
+                            <td>{{chamado.Pacote}}</td>
+                            <td>
+                                <a target="_blank" v-bind:href="'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=' + chamado.Chamado">
+                                    {{chamado.Chamado}}
+                                </a>                    
+                            </td>
+                            <td>{{chamado.Chamado_Nome}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>            
+        </div>
+        
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+    
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Changelog',
+                titulo: 'Quartzo',
+                selected:{"chamados":[]},
+                changelogs: [
+								{
+									"versao_num":"05.291",
+									"build":"",
+									"chamados":[{"Prioridade":"Alta","Pacote":"GESTÃO ADMINISTRATIVA > CADASTRO ÚNICO > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Estrutura Organizacional","Chamado":71335,"Chamado_Nome":"[CDU] [HML] O campo Classificação Organograma está carregando dados excluídos da tabela de Classificação Organograma"},{"Prioridade":"Média","Pacote":"GRP > CADASTRO ÚNICO > Estrutura Organizacional","Chamado":74746,"Chamado_Nome":"[CDU][PROD] Sistema está exibindo unidades orçamentárias subordinadas com exercício diferente da pesquisa."},{"Prioridade":"Baixa","Pacote":"GRP > CADASTRO ÚNICO > Estrutura Organizacional","Chamado":76792,"Chamado_Nome":"[CDU] [PROD] Corrigir/melhorar tela da estrutura organizacional."},{"Prioridade":"Baixa","Pacote":"GRP > CADASTRO ÚNICO > Estrutura Organizacional","Chamado":76478,"Chamado_Nome":"[CDU] [PROD] Correção da disposição do campo para o preenchimento do filtro."}]
+								}
+							]
+			}
+        });
+    </script>
+
+</body>
+
+</html>
