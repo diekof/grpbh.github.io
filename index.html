@@ -15,43 +15,27 @@
 
 <body>
     <div id="app" class="container">
-           
-        <div class="row">
-            <div class="col">
-                <h1> {{ message }}</h1>
-            </div>            
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="alert alert-primary" role="alert">
-                    {{titulo}}
-                    {{versao}}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <router-link class="dropdown-item" to="/ejada">EJADE</router-link>
+                    <router-link class="dropdown-item" to="/esafira">ESAFIRA</router-link>
                 </div>
             </div>
+        </nav>
+        <div class="row">
+            <div class="col">
+                <!-- component matched by the route will render here -->
+                <router-view></router-view>
+            </div>
         </div>
-
-<div class="row">
-    <table class="table table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Prioridade</th>
-                <th scope="col">Pacote</th>
-                <th scope="col">Chamado</th>
-                <th scope="col">Chamado_Nome</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="chamado of chamados">
-                <td scope="row">{{chamado.Prioridade}}</td>
-                <td>{{chamado.Pacote}}</td>
-                <td>{{chamado.Chamado}}</td>
-                <td>{{chamado.Chamado_Nome}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-        
     </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -67,19 +51,44 @@
 
 
     <!-- development version, includes helpful console warnings -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
 
     <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                message: 'Changelog',
-                titulo: 'ESafira',
-                versao:  '04.426!',
-                chamados: [{"Prioridade":"Média","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > PLANEJAMENTO E ORÇAMENTO > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > LDO: Elaboração","Chamado":57639,"Chamado_Nome":"[PLN] 2.24 Gerar a proposta da Lei de Diretrizes Orçamentárias acompanhada do Anexo de Metas fiscais."},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > FINANÇAS > Pacotes de Requisitos Funcionais > Tesouraria","Chamado":72835,"Chamado_Nome":"[FIN] - [3.68] [3.69]  Transferência Bancária: Ajustes Gerais"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74655,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 1 - Balanço Orçamentário (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74719,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 2 - Demonstrativo das Despesas por Função/SubFunção (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74721,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 4 - Demonstrativo das Receitas e Despesas Previdenciárias do Regime Próprio de Previdência dos Servidores (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74723,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 6 - Demonstrativos dos Resultados Primário e Nominal (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74724,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 7 - Demonstrativo dos Restos à Pagar por Poder e Órgão (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74727,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 9 - Demonstrativo das Receitas de Operações de Crédito e Despesas de Capital (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74729,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 10 - Demonstrativo da Projeção Atuarial do Regime Próprio de Previdência dos Servidores (RREO)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74736,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 01 - Demonstrativo de Despesa com Pessoal (RGF)"},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONTABILIDADE > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Demonstrativos Contábeis (Fiscais)","Chamado":74737,"Chamado_Nome":"[CTB] Assinantes dos Demonstrativos Contábeis - Anexo 2 - Demonstrativo da Dívida Consolidada Líquida (RGF)"},{"Prioridade":"Crítica","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > FINANÇAS > Pacotes de Requisitos Funcionais > Empenho","Chamado":71283,"Chamado_Nome":"[FIN] [H1] [EMP] 3.18.1 - O sistema permitiu alterar os parametros de despesa indireta de contrato para um agrupador vinculado a empenhos"},{"Prioridade":"Crítica","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > FINANÇAS > Pacotes de Requisitos Funcionais > Liquidação","Chamado":76068,"Chamado_Nome":"[FIN] [LQD] [INT] wtliquidacao - POC"},{"Prioridade":"Média","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONVÊNIOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Celebração","Chamado":76809,"Chamado_Nome":"[CNV] Erro ação Excluir - Pré Celebração. "},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONVÊNIOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Celebração","Chamado":76813,"Chamado_Nome":"[CNV] Erro campo Concedente - Pré Celebração."},{"Prioridade":"Alta","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONVÊNIOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Celebração","Chamado":76821,"Chamado_Nome":"[CNV] Erro Fluxo Devolução - Pré Celebração"},{"Prioridade":"Média","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONVÊNIOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Celebração","Chamado":76830,"Chamado_Nome":"[CNV] Erro Fluxo Devolução para próxima fase - Pré Celebração"},{"Prioridade":"Média","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONVÊNIOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Celebração","Chamado":76831,"Chamado_Nome":"[CNV] Incluir Regra no Designar Responsável- Pré Celebração"},{"Prioridade":"Média","Pacote":"GESTÃO DO PLANEJAMENTO, ORÇAMENTO, FINANÇAS E CONTÁBIL > CONVÊNIOS > PACOTES DE ENTREGA DE REQUISITOS FUNCIONAIS > Celebração","Chamado":76832,"Chamado_Nome":"[CNV] Alterar nome de campo - Pré Celebração. "}]
-            }
-        });
+        // 0. If using a module system (e.g. via vue-cli), import Vue and VueRouter
+        // and then call `Vue.use(VueRouter)`.
+
+        // 1. Define route components.
+        // These can be imported from other files
+        const Foo = { template: '<div>foo</div>' }
+        const Bar = { template: '<div>bar</div>' }
+
+        // 2. Define some routes
+        // Each route should map to a component. The "component" can
+        // either be an actual component constructor created via
+        // `Vue.extend()`, or just a component options object.
+        // We'll talk about nested routes later.
+        const routes = [
+            { path: '/foo', component: Foo },
+            { path: '/bar', component: Bar }
+        ]
+
+        // 3. Create the router instance and pass the `routes` option
+        // You can pass in additional options here, but let's
+        // keep it simple for now.
+        const router = new VueRouter({
+            routes // short for `routes: routes`
+        })
+
+        // 4. Create and mount the root instance.
+        // Make sure to inject the router with the router option to make the
+        // whole app router-aware.
+        const app = new Vue({
+            router
+        }).$mount('#app')
+
+        // Now the app has started!
     </script>
 
 </body>
