@@ -22,7 +22,7 @@ Listagem de cards
     FOR    ${v_card}   IN      @{v_cards}   
         Go To            ${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']} 
         Click Link       //a[@id="ui-id-13"]
-        ${rows}=    get element count   
+        ${rows}=    get element count   //table[@class='tab_cadre_fixehov']/tbody/tr 
         # Click Link       //a[@id="task21630"]
         # Click Element    //span[@id="select2-dropdown_plugin_tasklists_taskstates_id2039183355-container"]
         # Sleep   5s
