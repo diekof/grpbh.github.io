@@ -10,23 +10,30 @@ Suite Teardown      Close Session
 Test Teardown       Finalizando Teste
 
 *** Variables ***
-${BROWSER}      chrome
-${SLEEP}        3
-${BASE_URL}     https://atendimento.abaco.com.br/glpi
+${BROWSER}          chrome
+${SLEEP}            3
+${BASE_URL}         https://atendimento.abaco.com.br/glpi
+${TABELA_LINHAS}    //table[@class='tab_cadre_fixehov']/tbody/tr
+${TABELA}           //table[@class='tab_cadre_fixehov']
+
 
 *** Test Cases ***
 Listagem de cards 
     @{v_cards}=   Retorna arquivo em Json
     ...     cards.json
-    # Log Many    @{v_json}
+    Log Many    @{v_cards}
     FOR    ${v_card}   IN      @{v_cards}   
+
         Go To            ${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']} 
         Click Link       //a[@id="ui-id-13"]
-        ${rows}=    get element count   //table[@class='tab_cadre_fixehov']/tbody/tr 
-        # Click Link       //a[@id="task21630"]
-        # Click Element    //span[@id="select2-dropdown_plugin_tasklists_taskstates_id2039183355-container"]
-        # Sleep   5s
-    # Click Element    //input[@name="update"]
+
+        ${rows}=    get element count   ${TABELA_LINHAS}
+        Log To Console  ${rows}
+        @{elements}=    Get WebElements     ${TABELA_LINHAS}   
+        Log Many   @{elements}
+        Clicar na grid do cards
+        ...     @{elements}
+
     END
     # Go To            ${BASE_URL}/front/ticket.form.php?id=75795
     # Click Link       //a[@id="ui-id-13"]
@@ -35,6 +42,16 @@ Listagem de cards
     # Click Element    //input[@name="update"]
 
 *** Keywords ***
+Clicar na grid do cards
+    [Arguments]     @{linhas}
+
+    FOR     ${element}    IN  @{linhas}
+        ${text}=    Get Text    ${element} 
+        Log To Console  ${text}
+        # ${passed}=  Run Keyword And Return Status   Table Row Should Contain    ${TABELA}   ${index}    Concluído
+        # Log To Console  ${passed}
+    END
+
 Abrir navegador
     Open Browser     ${BASE_URL}    ${BROWSER}
 
