@@ -1,0 +1,2195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.8.2 on win32)" generated="20201104 10:53:19.923" rpa="false">
+<suite id="s1" name="Automacao" source="D:\Desenvolvimento\grpbh.github.io\test\automacao.robot">
+<kw name="Login Session" type="setup">
+<arguments>
+<arg>diego.silva</arg>
+<arg>jo@qu1m33</arg>
+</arguments>
+<kw name="Abrir navegador">
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+</arguments>
+<assign>
+<var>${options}</var>
+</assign>
+<msg timestamp="20201104 10:53:21.354" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002773E9F60A0&gt;</msg>
+<status status="PASS" starttime="20201104 10:53:21.353" endtime="20201104 10:53:21.354"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--kiosk-printing</arg>
+</arguments>
+<status status="PASS" starttime="20201104 10:53:21.355" endtime="20201104 10:53:21.355"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>printing.print_preview_sticky_settings.appState</arg>
+<arg>{"recentDestinations": [{"id": "Save as PDF","origin": "local","account": ""}],"selectedDestinationId": "Save as PDF","version": 2}</arg>
+</arguments>
+<assign>
+<var>${options.prefs}</var>
+</assign>
+<msg timestamp="20201104 10:53:21.356" level="INFO">${options.prefs} = {'printing.print_preview_sticky_settings.appState': '{"recentDestinations": [{"id": "Save as PDF","origin": "local","account": ""}],"selectedDestinationId": "Save as PDF","version": 2}'}</msg>
+<status status="PASS" starttime="20201104 10:53:21.355" endtime="20201104 10:53:21.356"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${options}</arg>
+<arg>add_experimental_option</arg>
+<arg>prefs</arg>
+<arg>${options.prefs}</arg>
+</arguments>
+<status status="PASS" starttime="20201104 10:53:21.357" endtime="20201104 10:53:21.357"></status>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=${options}</arg>
+</arguments>
+<msg timestamp="20201104 10:53:21.358" level="INFO">Opening browser 'chrome' to base url 'https://atendimento.abaco.com.br/glpi'.</msg>
+<status status="PASS" starttime="20201104 10:53:21.357" endtime="20201104 10:53:30.389"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20201104 10:53:30.390" endtime="20201104 10:53:32.528"></status>
+</kw>
+<kw name="Set Browser Implicit Wait" library="SeleniumLibrary">
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<arguments>
+<arg>15 seconds</arg>
+</arguments>
+<status status="PASS" starttime="20201104 10:53:32.528" endtime="20201104 10:53:32.531"></status>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<arguments>
+<arg>15 seconds</arg>
+</arguments>
+<status status="PASS" starttime="20201104 10:53:32.531" endtime="20201104 10:53:32.534"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.1 seconds</arg>
+</arguments>
+<status status="PASS" starttime="20201104 10:53:32.535" endtime="20201104 10:53:32.535"></status>
+</kw>
+<kw name="Set Selenium Timeout" library="SeleniumLibrary">
+<doc>Sets the timeout that is used by various keywords.</doc>
+<arguments>
+<arg>60 seconds</arg>
+</arguments>
+<status status="PASS" starttime="20201104 10:53:32.536" endtime="20201104 10:53:32.639"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:53:21.351" endtime="20201104 10:53:32.640"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:login_name</arg>
+<arg>${usuer}</arg>
+</arguments>
+<msg timestamp="20201104 10:53:32.641" level="INFO">Typing text 'diego.silva' into text field 'id:login_name'.</msg>
+<status status="PASS" starttime="20201104 10:53:32.640" endtime="20201104 10:53:33.598"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:login_password</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20201104 10:53:33.600" level="INFO">Typing text 'jo@qu1m33' into text field 'id:login_password'.</msg>
+<status status="PASS" starttime="20201104 10:53:33.599" endtime="20201104 10:53:34.393"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@name="submit"]</arg>
+</arguments>
+<msg timestamp="20201104 10:53:34.394" level="INFO">Clicking element '//input[@name="submit"]'.</msg>
+<status status="PASS" starttime="20201104 10:53:34.393" endtime="20201104 10:53:42.470"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:53:21.351" endtime="20201104 10:53:42.470"></status>
+</kw>
+<test id="s1-t1" name="Listagem de cards">
+<kw name="Impressao de arquivos">
+<arguments>
+<arg>ctb.json</arg>
+</arguments>
+<kw name="Retorna arquivo em Json">
+<doc>Função responsável por transformar uma string json em um objeto.</doc>
+<arguments>
+<arg>${modulo}</arg>
+</arguments>
+<assign>
+<var>@{v_cards}</var>
+</assign>
+<kw name="Get File" library="OperatingSystem">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>${EXECDIR}/fixtures/${json_file}</arg>
+</arguments>
+<assign>
+<var>${string_file}</var>
+</assign>
+<msg timestamp="20201104 10:53:42.499" level="INFO" html="yes">Getting file '&lt;a href="file://D:\Desenvolvimento\grpbh.github.io\test\fixtures\ctb.json"&gt;D:\Desenvolvimento\grpbh.github.io\test\fixtures\ctb.json&lt;/a&gt;'.</msg>
+<msg timestamp="20201104 10:53:42.677" level="INFO">${string_file} = [
+    {"Chamado":76545},
+    {"Chamado":76548},
+    {"Chamado":76550},
+    {"Chamado":76556},
+    {"Chamado":76565},
+    {"Chamado":76855},
+    {"Chamado":77779},
+    {"Chamado":70994},
+    {"Chamado"...</msg>
+<status status="PASS" starttime="20201104 10:53:42.498" endtime="20201104 10:53:42.677"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads($string_file)</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${jsob_object}</var>
+</assign>
+<msg timestamp="20201104 10:53:42.693" level="INFO">${jsob_object} = [{'Chamado': 76545}, {'Chamado': 76548}, {'Chamado': 76550}, {'Chamado': 76556}, {'Chamado': 76565}, {'Chamado': 76855}, {'Chamado': 77779}, {'Chamado': 70994}, {'Chamado': 70997}, {'Chamado': 70999},...</msg>
+<status status="PASS" starttime="20201104 10:53:42.677" endtime="20201104 10:53:42.693"></status>
+</kw>
+<msg timestamp="20201104 10:53:42.694" level="INFO">@{v_cards} = [ {'Chamado': 76545} | {'Chamado': 76548} | {'Chamado': 76550} | {'Chamado': 76556} | {'Chamado': 76565} | {'Chamado': 76855} | {'Chamado': 77779} | {'Chamado': 70994} | {'Chamado': 70997} | {'Chamado...</msg>
+<status status="PASS" starttime="20201104 10:53:42.495" endtime="20201104 10:53:42.694"></status>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>@{v_cards}</arg>
+</arguments>
+<msg timestamp="20201104 10:53:42.695" level="INFO">{'Chamado': 76545}</msg>
+<msg timestamp="20201104 10:53:42.695" level="INFO">{'Chamado': 76548}</msg>
+<msg timestamp="20201104 10:53:42.695" level="INFO">{'Chamado': 76550}</msg>
+<msg timestamp="20201104 10:53:42.696" level="INFO">{'Chamado': 76556}</msg>
+<msg timestamp="20201104 10:53:42.696" level="INFO">{'Chamado': 76565}</msg>
+<msg timestamp="20201104 10:53:42.696" level="INFO">{'Chamado': 76855}</msg>
+<msg timestamp="20201104 10:53:42.696" level="INFO">{'Chamado': 77779}</msg>
+<msg timestamp="20201104 10:53:42.697" level="INFO">{'Chamado': 70994}</msg>
+<msg timestamp="20201104 10:53:42.698" level="INFO">{'Chamado': 70997}</msg>
+<msg timestamp="20201104 10:53:42.698" level="INFO">{'Chamado': 70999}</msg>
+<msg timestamp="20201104 10:53:42.698" level="INFO">{'Chamado': 71078}</msg>
+<msg timestamp="20201104 10:53:42.698" level="INFO">{'Chamado': 71079}</msg>
+<msg timestamp="20201104 10:53:42.698" level="INFO">{'Chamado': 71083}</msg>
+<msg timestamp="20201104 10:53:42.698" level="INFO">{'Chamado': 72081}</msg>
+<msg timestamp="20201104 10:53:42.698" level="INFO">{'Chamado': 72899}</msg>
+<msg timestamp="20201104 10:53:42.698" level="INFO">{'Chamado': 72900}</msg>
+<msg timestamp="20201104 10:53:42.699" level="INFO">{'Chamado': 72901}</msg>
+<msg timestamp="20201104 10:53:42.699" level="INFO">{'Chamado': 73041}</msg>
+<msg timestamp="20201104 10:53:42.699" level="INFO">{'Chamado': 59181}</msg>
+<msg timestamp="20201104 10:53:42.699" level="INFO">{'Chamado': 59344}</msg>
+<msg timestamp="20201104 10:53:42.699" level="INFO">{'Chamado': 76552}</msg>
+<msg timestamp="20201104 10:53:42.699" level="INFO">{'Chamado': 72084}</msg>
+<msg timestamp="20201104 10:53:42.699" level="INFO">{'Chamado': 76554}</msg>
+<msg timestamp="20201104 10:53:42.699" level="INFO">{'Chamado': 76849}</msg>
+<msg timestamp="20201104 10:53:42.699" level="INFO">{'Chamado': 70181}</msg>
+<msg timestamp="20201104 10:53:42.699" level="INFO">{'Chamado': 70226}</msg>
+<msg timestamp="20201104 10:53:42.699" level="INFO">{'Chamado': 70301}</msg>
+<msg timestamp="20201104 10:53:42.700" level="INFO">{'Chamado': 70307}</msg>
+<msg timestamp="20201104 10:53:42.701" level="INFO">{'Chamado': 70434}</msg>
+<msg timestamp="20201104 10:53:42.701" level="INFO">{'Chamado': 70435}</msg>
+<msg timestamp="20201104 10:53:42.701" level="INFO">{'Chamado': 70439}</msg>
+<msg timestamp="20201104 10:53:42.701" level="INFO">{'Chamado': 70980}</msg>
+<msg timestamp="20201104 10:53:42.702" level="INFO">{'Chamado': 70982}</msg>
+<msg timestamp="20201104 10:53:42.702" level="INFO">{'Chamado': 70985}</msg>
+<msg timestamp="20201104 10:53:42.702" level="INFO">{'Chamado': 70992}</msg>
+<msg timestamp="20201104 10:53:42.702" level="INFO">{'Chamado': 68860}</msg>
+<msg timestamp="20201104 10:53:42.702" level="INFO">{'Chamado': 68862}</msg>
+<msg timestamp="20201104 10:53:42.702" level="INFO">{'Chamado': 70302}</msg>
+<msg timestamp="20201104 10:53:42.702" level="INFO">{'Chamado': 70304}</msg>
+<msg timestamp="20201104 10:53:42.703" level="INFO">{'Chamado': 73039}</msg>
+<msg timestamp="20201104 10:53:42.703" level="INFO">{'Chamado': 68864}</msg>
+<msg timestamp="20201104 10:53:42.703" level="INFO">{'Chamado': 68865}</msg>
+<msg timestamp="20201104 10:53:42.703" level="INFO">{'Chamado': 70987}</msg>
+<msg timestamp="20201104 10:53:42.703" level="INFO">{'Chamado': 71080}</msg>
+<msg timestamp="20201104 10:53:42.703" level="INFO">{'Chamado': 72077}</msg>
+<msg timestamp="20201104 10:53:42.703" level="INFO">{'Chamado': 72080}</msg>
+<msg timestamp="20201104 10:53:42.703" level="INFO">{'Chamado': 73040}</msg>
+<msg timestamp="20201104 10:53:42.703" level="INFO">{'Chamado': 84918}</msg>
+<msg timestamp="20201104 10:53:42.704" level="INFO">{'Chamado': 58995}</msg>
+<msg timestamp="20201104 10:53:42.704" level="INFO">{'Chamado': 59184}</msg>
+<msg timestamp="20201104 10:53:42.704" level="INFO">{'Chamado': 59187}</msg>
+<msg timestamp="20201104 10:53:42.704" level="INFO">{'Chamado': 84917}</msg>
+<status status="PASS" starttime="20201104 10:53:42.694" endtime="20201104 10:53:42.704"></status>
+</kw>
+<kw name="${v_card} IN [ @{v_cards} ]" type="for">
+<kw name="${v_card} = {'Chamado': 76545}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:53:42.706" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=76545'</msg>
+<status status="PASS" starttime="20201104 10:53:42.705" endtime="20201104 10:53:45.440"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:53:47.442" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:53:45.440" endtime="20201104 10:53:47.442"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:53:47.443" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:53:47.442" endtime="20201104 10:53:53.121"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:53:58.123" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:53:53.122" endtime="20201104 10:53:58.123"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:53:42.705" endtime="20201104 10:53:58.123"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 76548}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:53:58.125" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=76548'</msg>
+<status status="PASS" starttime="20201104 10:53:58.124" endtime="20201104 10:54:01.174"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:54:03.175" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:54:01.174" endtime="20201104 10:54:03.175"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:54:03.176" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:54:03.175" endtime="20201104 10:54:06.826"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:54:11.829" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:54:06.826" endtime="20201104 10:54:11.829"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:53:58.124" endtime="20201104 10:54:11.829"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 76550}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:54:11.831" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=76550'</msg>
+<status status="PASS" starttime="20201104 10:54:11.830" endtime="20201104 10:54:14.837"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:54:16.838" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:54:14.837" endtime="20201104 10:54:16.838"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:54:16.842" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:54:16.841" endtime="20201104 10:54:19.756"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:54:24.759" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:54:19.757" endtime="20201104 10:54:24.759"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:54:11.829" endtime="20201104 10:54:24.759"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 76556}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:54:24.760" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=76556'</msg>
+<status status="PASS" starttime="20201104 10:54:24.759" endtime="20201104 10:54:27.103"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:54:29.107" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:54:27.104" endtime="20201104 10:54:29.107"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:54:29.108" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:54:29.107" endtime="20201104 10:54:34.325"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:54:39.329" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:54:34.326" endtime="20201104 10:54:39.329"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:54:24.759" endtime="20201104 10:54:39.329"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 76565}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:54:39.331" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=76565'</msg>
+<status status="PASS" starttime="20201104 10:54:39.329" endtime="20201104 10:54:42.830"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:54:44.837" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:54:42.834" endtime="20201104 10:54:44.837"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:54:44.839" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:54:44.838" endtime="20201104 10:54:48.291"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:54:53.295" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:54:48.292" endtime="20201104 10:54:53.295"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:54:39.329" endtime="20201104 10:54:53.295"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 76855}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:54:53.296" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=76855'</msg>
+<status status="PASS" starttime="20201104 10:54:53.296" endtime="20201104 10:54:55.044"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:54:57.046" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:54:55.044" endtime="20201104 10:54:57.046"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:54:57.047" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:54:57.046" endtime="20201104 10:55:00.785"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:55:05.790" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:55:00.786" endtime="20201104 10:55:05.790"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:54:53.295" endtime="20201104 10:55:05.790"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 77779}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:55:05.791" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=77779'</msg>
+<status status="PASS" starttime="20201104 10:55:05.791" endtime="20201104 10:55:07.447"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:55:09.450" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:55:07.447" endtime="20201104 10:55:09.450"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:55:09.451" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:55:09.450" endtime="20201104 10:55:12.595"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:55:17.599" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:55:12.596" endtime="20201104 10:55:17.599"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:55:05.790" endtime="20201104 10:55:17.599"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70994}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:55:17.600" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70994'</msg>
+<status status="PASS" starttime="20201104 10:55:17.600" endtime="20201104 10:55:19.044"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:55:21.046" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:55:19.044" endtime="20201104 10:55:21.046"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:55:21.047" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:55:21.046" endtime="20201104 10:55:24.424"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:55:29.427" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:55:24.425" endtime="20201104 10:55:29.427"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:55:17.599" endtime="20201104 10:55:29.427"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70997}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:55:29.429" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70997'</msg>
+<status status="PASS" starttime="20201104 10:55:29.428" endtime="20201104 10:55:31.174"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:55:33.177" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:55:31.174" endtime="20201104 10:55:33.177"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:55:33.178" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:55:33.177" endtime="20201104 10:55:37.148"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:55:42.151" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:55:37.148" endtime="20201104 10:55:42.151"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:55:29.427" endtime="20201104 10:55:42.151"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70999}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:55:42.154" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70999'</msg>
+<status status="PASS" starttime="20201104 10:55:42.153" endtime="20201104 10:55:44.374"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:55:46.376" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:55:44.374" endtime="20201104 10:55:46.376"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:55:46.378" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:55:46.377" endtime="20201104 10:55:50.103"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:55:55.106" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:55:50.104" endtime="20201104 10:55:55.107"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:55:42.152" endtime="20201104 10:55:55.107"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 71078}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:55:55.109" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=71078'</msg>
+<status status="PASS" starttime="20201104 10:55:55.108" endtime="20201104 10:55:56.451"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:55:58.454" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:55:56.451" endtime="20201104 10:55:58.454"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:55:58.455" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:55:58.454" endtime="20201104 10:56:02.640"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:56:07.642" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:56:02.641" endtime="20201104 10:56:07.642"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:55:55.107" endtime="20201104 10:56:07.642"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 71079}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:56:07.643" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=71079'</msg>
+<status status="PASS" starttime="20201104 10:56:07.643" endtime="20201104 10:56:09.659"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:56:11.661" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:56:09.659" endtime="20201104 10:56:11.661"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:56:11.668" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:56:11.665" endtime="20201104 10:56:16.377"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:56:21.380" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:56:16.377" endtime="20201104 10:56:21.380"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:56:07.642" endtime="20201104 10:56:21.380"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 71083}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:56:21.382" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=71083'</msg>
+<status status="PASS" starttime="20201104 10:56:21.381" endtime="20201104 10:56:24.288"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:56:26.290" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:56:24.288" endtime="20201104 10:56:26.292"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:56:26.294" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:56:26.293" endtime="20201104 10:56:31.092"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:56:36.095" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:56:31.093" endtime="20201104 10:56:36.095"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:56:21.381" endtime="20201104 10:56:36.096"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 72081}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:56:36.097" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=72081'</msg>
+<status status="PASS" starttime="20201104 10:56:36.096" endtime="20201104 10:56:37.994"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:56:39.997" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:56:37.994" endtime="20201104 10:56:39.998"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:56:39.999" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:56:39.998" endtime="20201104 10:56:43.909"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:56:48.912" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:56:43.909" endtime="20201104 10:56:48.912"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:56:36.096" endtime="20201104 10:56:48.912"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 72899}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:56:48.918" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=72899'</msg>
+<status status="PASS" starttime="20201104 10:56:48.915" endtime="20201104 10:56:51.000"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:56:53.002" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:56:51.000" endtime="20201104 10:56:53.002"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:56:53.003" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:56:53.002" endtime="20201104 10:56:57.465"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:57:02.467" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:56:57.465" endtime="20201104 10:57:02.467"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:56:48.912" endtime="20201104 10:57:02.467"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 72900}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:57:02.468" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=72900'</msg>
+<status status="PASS" starttime="20201104 10:57:02.468" endtime="20201104 10:57:05.343"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:57:07.345" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:57:05.343" endtime="20201104 10:57:07.346"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:57:07.347" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:57:07.346" endtime="20201104 10:57:11.171"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:57:16.173" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:57:11.171" endtime="20201104 10:57:16.173"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:57:02.467" endtime="20201104 10:57:16.173"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 72901}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:57:16.175" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=72901'</msg>
+<status status="PASS" starttime="20201104 10:57:16.174" endtime="20201104 10:57:19.860"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:57:21.862" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:57:19.860" endtime="20201104 10:57:21.862"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:57:21.863" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:57:21.862" endtime="20201104 10:57:24.729"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:57:29.731" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:57:24.729" endtime="20201104 10:57:29.731"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:57:16.174" endtime="20201104 10:57:29.731"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 73041}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:57:29.732" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=73041'</msg>
+<status status="PASS" starttime="20201104 10:57:29.732" endtime="20201104 10:57:31.007"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:57:33.009" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:57:31.007" endtime="20201104 10:57:33.009"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:57:33.010" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:57:33.009" endtime="20201104 10:57:36.290"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:57:41.292" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:57:36.291" endtime="20201104 10:57:41.292"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:57:29.731" endtime="20201104 10:57:41.292"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 59181}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:57:41.293" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=59181'</msg>
+<status status="PASS" starttime="20201104 10:57:41.292" endtime="20201104 10:57:42.593"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:57:44.595" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:57:42.593" endtime="20201104 10:57:44.595"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:57:44.596" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:57:44.595" endtime="20201104 10:57:47.623"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:57:52.625" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:57:47.623" endtime="20201104 10:57:52.625"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:57:41.292" endtime="20201104 10:57:52.625"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 59344}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:57:52.626" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=59344'</msg>
+<status status="PASS" starttime="20201104 10:57:52.625" endtime="20201104 10:57:54.570"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:57:56.571" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:57:54.570" endtime="20201104 10:57:56.571"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:57:56.573" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:57:56.571" endtime="20201104 10:57:59.685"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:58:04.687" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:57:59.685" endtime="20201104 10:58:04.687"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:57:52.625" endtime="20201104 10:58:04.687"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 76552}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:58:04.688" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=76552'</msg>
+<status status="PASS" starttime="20201104 10:58:04.687" endtime="20201104 10:58:05.856"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:58:07.857" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:58:05.856" endtime="20201104 10:58:07.857"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:58:07.858" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:58:07.857" endtime="20201104 10:58:10.588"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:58:15.591" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:58:10.589" endtime="20201104 10:58:15.591"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:58:04.687" endtime="20201104 10:58:15.591"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 72084}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:58:15.592" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=72084'</msg>
+<status status="PASS" starttime="20201104 10:58:15.592" endtime="20201104 10:58:17.736"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:58:19.739" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:58:17.737" endtime="20201104 10:58:19.740"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:58:19.743" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:58:19.740" endtime="20201104 10:58:23.086"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:58:28.095" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:58:23.087" endtime="20201104 10:58:28.095"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:58:15.591" endtime="20201104 10:58:28.095"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 76554}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:58:28.097" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=76554'</msg>
+<status status="PASS" starttime="20201104 10:58:28.096" endtime="20201104 10:58:29.643"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:58:31.645" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:58:29.643" endtime="20201104 10:58:31.645"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:58:31.646" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:58:31.645" endtime="20201104 10:58:34.247"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:58:39.248" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:58:34.248" endtime="20201104 10:58:39.248"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:58:28.096" endtime="20201104 10:58:39.248"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 76849}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:58:39.249" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=76849'</msg>
+<status status="PASS" starttime="20201104 10:58:39.248" endtime="20201104 10:58:41.259"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:58:43.259" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:58:41.259" endtime="20201104 10:58:43.259"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:58:43.260" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:58:43.259" endtime="20201104 10:58:45.606"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:58:50.608" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:58:45.607" endtime="20201104 10:58:50.608"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:58:39.248" endtime="20201104 10:58:50.608"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70181}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:58:50.609" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70181'</msg>
+<status status="PASS" starttime="20201104 10:58:50.609" endtime="20201104 10:58:52.824"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:58:54.826" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:58:52.824" endtime="20201104 10:58:54.826"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:58:54.827" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:58:54.826" endtime="20201104 10:58:57.148"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:59:02.149" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:58:57.148" endtime="20201104 10:59:02.149"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:58:50.608" endtime="20201104 10:59:02.149"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70226}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:59:02.150" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70226'</msg>
+<status status="PASS" starttime="20201104 10:59:02.149" endtime="20201104 10:59:03.869"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:59:05.870" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:59:03.869" endtime="20201104 10:59:05.870"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:59:05.871" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:59:05.870" endtime="20201104 10:59:08.151"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:59:13.153" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:59:08.151" endtime="20201104 10:59:13.153"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:59:02.149" endtime="20201104 10:59:13.153"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70301}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:59:13.155" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70301'</msg>
+<status status="PASS" starttime="20201104 10:59:13.154" endtime="20201104 10:59:14.480"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:59:16.482" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:59:14.480" endtime="20201104 10:59:16.482"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:59:16.483" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:59:16.482" endtime="20201104 10:59:19.063"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:59:24.067" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:59:19.064" endtime="20201104 10:59:24.067"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:59:13.153" endtime="20201104 10:59:24.067"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70307}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:59:24.069" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70307'</msg>
+<status status="PASS" starttime="20201104 10:59:24.067" endtime="20201104 10:59:25.540"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:59:27.542" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:59:25.540" endtime="20201104 10:59:27.542"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:59:27.543" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:59:27.542" endtime="20201104 10:59:29.863"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:59:34.864" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:59:29.863" endtime="20201104 10:59:34.864"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:59:24.067" endtime="20201104 10:59:34.864"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70434}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:59:34.865" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70434'</msg>
+<status status="PASS" starttime="20201104 10:59:34.864" endtime="20201104 10:59:36.267"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:59:38.268" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:59:36.267" endtime="20201104 10:59:38.268"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:59:38.269" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:59:38.268" endtime="20201104 10:59:40.574"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:59:45.577" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:59:40.574" endtime="20201104 10:59:45.577"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:59:34.864" endtime="20201104 10:59:45.577"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70435}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:59:45.578" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70435'</msg>
+<status status="PASS" starttime="20201104 10:59:45.578" endtime="20201104 10:59:46.750"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:59:48.753" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:59:46.750" endtime="20201104 10:59:48.753"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:59:48.754" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:59:48.753" endtime="20201104 10:59:51.129"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 10:59:56.131" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 10:59:51.130" endtime="20201104 10:59:56.131"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:59:45.577" endtime="20201104 10:59:56.131"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70439}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 10:59:56.133" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70439'</msg>
+<status status="PASS" starttime="20201104 10:59:56.132" endtime="20201104 10:59:57.509"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 10:59:59.511" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 10:59:57.510" endtime="20201104 10:59:59.511"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 10:59:59.512" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 10:59:59.511" endtime="20201104 11:00:02.446"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:00:07.451" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:00:02.448" endtime="20201104 11:00:07.451"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:59:56.131" endtime="20201104 11:00:07.451"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70980}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:00:07.452" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70980'</msg>
+<status status="PASS" starttime="20201104 11:00:07.452" endtime="20201104 11:00:08.921"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:00:10.924" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:00:08.921" endtime="20201104 11:00:10.924"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:00:10.925" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:00:10.924" endtime="20201104 11:00:13.397"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:00:18.399" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:00:13.398" endtime="20201104 11:00:18.399"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:00:07.451" endtime="20201104 11:00:18.399"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70982}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:00:18.400" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70982'</msg>
+<status status="PASS" starttime="20201104 11:00:18.400" endtime="20201104 11:00:20.105"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:00:22.106" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:00:20.105" endtime="20201104 11:00:22.106"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:00:22.107" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:00:22.106" endtime="20201104 11:00:25.728"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:00:30.730" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:00:25.728" endtime="20201104 11:00:30.730"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:00:18.399" endtime="20201104 11:00:30.730"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70985}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:00:30.732" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70985'</msg>
+<status status="PASS" starttime="20201104 11:00:30.731" endtime="20201104 11:00:32.287"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:00:34.294" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:00:32.287" endtime="20201104 11:00:34.295"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:00:34.297" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:00:34.296" endtime="20201104 11:00:37.955"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:00:42.957" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:00:37.955" endtime="20201104 11:00:42.957"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:00:30.730" endtime="20201104 11:00:42.957"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70992}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:00:42.959" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70992'</msg>
+<status status="PASS" starttime="20201104 11:00:42.958" endtime="20201104 11:00:44.797"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:00:46.799" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:00:44.797" endtime="20201104 11:00:46.799"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:00:46.801" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:00:46.800" endtime="20201104 11:00:50.180"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:00:55.182" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:00:50.180" endtime="20201104 11:00:55.182"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:00:42.957" endtime="20201104 11:00:55.182"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 68860}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:00:55.183" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=68860'</msg>
+<status status="PASS" starttime="20201104 11:00:55.182" endtime="20201104 11:00:58.625"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:01:00.628" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:00:58.626" endtime="20201104 11:01:00.628"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:01:00.629" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:01:00.628" endtime="20201104 11:01:03.055"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:01:08.058" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:01:03.055" endtime="20201104 11:01:08.058"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:00:55.182" endtime="20201104 11:01:08.058"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 68862}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:01:08.059" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=68862'</msg>
+<status status="PASS" starttime="20201104 11:01:08.058" endtime="20201104 11:01:09.583"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:01:11.586" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:01:09.583" endtime="20201104 11:01:11.586"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:01:11.587" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:01:11.586" endtime="20201104 11:01:14.218"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:01:19.221" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:01:14.218" endtime="20201104 11:01:19.221"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:01:08.058" endtime="20201104 11:01:19.221"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70302}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:01:19.223" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70302'</msg>
+<status status="PASS" starttime="20201104 11:01:19.222" endtime="20201104 11:01:20.944"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:01:22.947" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:01:20.944" endtime="20201104 11:01:22.947"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:01:22.948" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:01:22.947" endtime="20201104 11:01:25.251"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:01:30.254" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:01:25.251" endtime="20201104 11:01:30.254"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:01:19.222" endtime="20201104 11:01:30.254"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70304}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:01:30.255" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70304'</msg>
+<status status="PASS" starttime="20201104 11:01:30.255" endtime="20201104 11:01:32.063"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:01:34.064" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:01:32.063" endtime="20201104 11:01:34.064"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:01:34.065" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:01:34.064" endtime="20201104 11:01:36.683"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:01:41.689" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:01:36.684" endtime="20201104 11:01:41.689"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:01:30.254" endtime="20201104 11:01:41.689"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 73039}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:01:41.690" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=73039'</msg>
+<status status="PASS" starttime="20201104 11:01:41.689" endtime="20201104 11:01:43.190"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:01:45.191" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:01:43.190" endtime="20201104 11:01:45.191"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:01:45.192" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:01:45.191" endtime="20201104 11:01:47.699"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:01:52.700" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:01:47.699" endtime="20201104 11:01:52.700"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:01:41.689" endtime="20201104 11:01:52.700"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 68864}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:01:52.701" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=68864'</msg>
+<status status="PASS" starttime="20201104 11:01:52.700" endtime="20201104 11:01:54.229"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:01:56.234" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:01:54.230" endtime="20201104 11:01:56.234"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:01:56.235" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:01:56.234" endtime="20201104 11:01:58.909"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:02:03.911" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:01:58.910" endtime="20201104 11:02:03.911"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:01:52.700" endtime="20201104 11:02:03.911"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 68865}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:02:03.912" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=68865'</msg>
+<status status="PASS" starttime="20201104 11:02:03.911" endtime="20201104 11:02:05.368"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:02:07.369" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:02:05.368" endtime="20201104 11:02:07.369"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:02:07.370" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:02:07.370" endtime="20201104 11:02:10.461"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:02:15.466" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:02:10.463" endtime="20201104 11:02:15.466"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:02:03.911" endtime="20201104 11:02:15.466"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 70987}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:02:15.468" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=70987'</msg>
+<status status="PASS" starttime="20201104 11:02:15.467" endtime="20201104 11:02:17.246"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:02:19.247" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:02:17.246" endtime="20201104 11:02:19.247"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:02:19.248" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:02:19.247" endtime="20201104 11:02:21.984"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:02:26.985" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:02:21.984" endtime="20201104 11:02:26.985"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:02:15.466" endtime="20201104 11:02:26.985"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 71080}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:02:26.987" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=71080'</msg>
+<status status="PASS" starttime="20201104 11:02:26.986" endtime="20201104 11:02:28.663"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:02:30.664" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:02:28.663" endtime="20201104 11:02:30.664"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:02:30.665" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:02:30.664" endtime="20201104 11:02:33.202"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:02:38.207" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:02:33.205" endtime="20201104 11:02:38.207"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:02:26.985" endtime="20201104 11:02:38.207"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 72077}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:02:38.208" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=72077'</msg>
+<status status="PASS" starttime="20201104 11:02:38.208" endtime="20201104 11:02:39.125"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:02:41.128" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:02:39.125" endtime="20201104 11:02:41.128"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:02:41.129" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:02:41.128" endtime="20201104 11:02:43.402"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:02:48.405" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:02:43.402" endtime="20201104 11:02:48.407"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:02:38.207" endtime="20201104 11:02:48.407"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 72080}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:02:48.408" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=72080'</msg>
+<status status="PASS" starttime="20201104 11:02:48.407" endtime="20201104 11:02:49.835"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:02:51.836" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:02:49.835" endtime="20201104 11:02:51.836"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:02:51.837" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:02:51.836" endtime="20201104 11:02:54.281"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:02:59.282" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:02:54.281" endtime="20201104 11:02:59.283"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:02:48.407" endtime="20201104 11:02:59.283"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 73040}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:02:59.284" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=73040'</msg>
+<status status="PASS" starttime="20201104 11:02:59.283" endtime="20201104 11:03:00.544"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:03:02.545" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:03:00.544" endtime="20201104 11:03:02.545"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:03:02.546" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:03:02.545" endtime="20201104 11:03:05.094"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:03:10.097" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:03:05.094" endtime="20201104 11:03:10.097"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:02:59.283" endtime="20201104 11:03:10.097"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 84918}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:03:10.099" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=84918'</msg>
+<status status="PASS" starttime="20201104 11:03:10.098" endtime="20201104 11:03:12.054"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:03:14.056" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:03:12.054" endtime="20201104 11:03:14.056"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:03:14.057" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:03:14.056" endtime="20201104 11:03:16.250"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:03:21.251" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:03:16.250" endtime="20201104 11:03:21.251"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:03:10.097" endtime="20201104 11:03:21.251"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 58995}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:03:21.252" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=58995'</msg>
+<status status="PASS" starttime="20201104 11:03:21.251" endtime="20201104 11:03:23.020"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:03:25.022" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:03:23.020" endtime="20201104 11:03:25.022"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:03:25.024" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:03:25.022" endtime="20201104 11:03:28.163"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:03:33.164" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:03:28.164" endtime="20201104 11:03:33.164"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:03:21.251" endtime="20201104 11:03:33.164"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 59184}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:03:33.165" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=59184'</msg>
+<status status="PASS" starttime="20201104 11:03:33.165" endtime="20201104 11:03:34.308"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:03:36.310" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:03:34.309" endtime="20201104 11:03:36.310"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:03:36.311" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:03:36.310" endtime="20201104 11:03:38.792"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:03:43.793" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:03:38.792" endtime="20201104 11:03:43.793"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:03:33.164" endtime="20201104 11:03:43.793"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 59187}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:03:43.794" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=59187'</msg>
+<status status="PASS" starttime="20201104 11:03:43.794" endtime="20201104 11:03:45.379"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:03:47.380" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:03:45.379" endtime="20201104 11:03:47.380"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:03:47.381" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:03:47.380" endtime="20201104 11:03:50.138"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:03:55.141" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:03:50.139" endtime="20201104 11:03:55.141"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:03:43.793" endtime="20201104 11:03:55.141"></status>
+</kw>
+<kw name="${v_card} = {'Chamado': 84917}" type="foritem">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/front/ticket.form.php?id=${v_card['Chamado']}</arg>
+</arguments>
+<msg timestamp="20201104 11:03:55.143" level="INFO">Opening url 'https://atendimento.abaco.com.br/glpi/front/ticket.form.php?id=84917'</msg>
+<status status="PASS" starttime="20201104 11:03:55.142" endtime="20201104 11:03:57.406"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20201104 11:03:59.407" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20201104 11:03:57.406" endtime="20201104 11:03:59.407"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.print();</arg>
+</arguments>
+<msg timestamp="20201104 11:03:59.408" level="INFO">Executing JavaScript:
+window.print();
+Without any arguments.</msg>
+<status status="PASS" starttime="20201104 11:03:59.407" endtime="20201104 11:04:02.264"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20201104 11:04:07.267" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20201104 11:04:02.265" endtime="20201104 11:04:07.267"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:03:55.141" endtime="20201104 11:04:07.267"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:53:42.704" endtime="20201104 11:04:07.267"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:53:42.491" endtime="20201104 11:04:07.267"></status>
+</kw>
+<kw name="Finalizando Teste" type="teardown">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20201104 11:04:08.032" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20201104 11:04:07.269" endtime="20201104 11:04:08.032"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:04:07.269" endtime="20201104 11:04:08.033"></status>
+</kw>
+<status status="PASS" starttime="20201104 10:53:42.470" endtime="20201104 11:04:08.037" critical="yes"></status>
+</test>
+<kw name="Close Session" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20201104 11:04:08.049" endtime="20201104 11:04:10.472"></status>
+</kw>
+<status status="PASS" starttime="20201104 11:04:08.049" endtime="20201104 11:04:10.472"></status>
+</kw>
+<doc>A test suite with a single test for GLPI - Chamados</doc>
+<status status="PASS" starttime="20201104 10:53:19.926" endtime="20201104 11:04:10.473"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Automacao">Automacao</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
